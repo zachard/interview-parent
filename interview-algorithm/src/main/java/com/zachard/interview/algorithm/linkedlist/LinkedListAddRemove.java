@@ -56,5 +56,85 @@ public class LinkedListAddRemove {
         
         return true;
     }
+    
+    /**
+     * 将元素加到链表指定位置
+     * 
+     * @param index   指定的链表位置
+     * @param data    元素数据
+     * @return        true-添加成功, false-添加失败
+     */
+    public boolean addNodeToIndex(int index, int data) {
+        
+        if (index < 1 || index > (length() + 1)) {
+            // 链表下表有误, length() + 1 表示加在链表的尾端
+            return false;
+        }
+        
+        LinkedListNode node = new LinkedListNode(data);
+        
+        if (head == null) {
+            // 当链表为空时的特殊处理, 直接将head指向需要添加的元素
+            head = node;
+            return true;
+        }
+        
+        LinkedListNode preNode = head;
+        
+        for (int i = 1; i < index - 1; i++) {
+            
+            if (preNode.next == null) {
+                // 将元素追加到链表末端的情况
+                preNode.next = node;
+                return true;
+            }
+            
+            preNode = preNode.next;
+        }
+        
+        // p.next = s; s.next = a
+        LinkedListNode nextNode = preNode.next;
+        preNode.next = node;
+        node.next = nextNode;
+        
+        return true;
+    }
+    
+    /**
+     * 计算链表的长度
+     * 
+     * @return    链表的长度
+     */
+    public int length() {
+        int length = 0;
+        
+        LinkedListNode tmp = head;
+        
+        while (tmp != null) {
+            tmp = tmp.next;
+            length++;
+        }
+        
+        return length;
+    }
+    
+    /**
+     * 链表的字符串表示
+     * 
+     * @return  链表元素的字符串表示
+     */
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder("");
+        
+        LinkedListNode tmp = head;
+        
+        while (tmp != null) {
+            sb.append(tmp.data).append("  ");
+            tmp = tmp.next;
+        }
+        
+        return sb.toString();
+    }
 
 }
