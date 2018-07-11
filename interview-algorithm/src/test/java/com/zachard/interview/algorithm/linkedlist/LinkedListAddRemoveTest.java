@@ -75,5 +75,49 @@ public class LinkedListAddRemoveTest {
         System.err.println("链表中的内容为: " + linkedList);
         System.err.println("链表此时的长度为: " + linkedList.length());
     }
+    
+    /**
+     * 删除链表指定位置上的元素方法测试
+     */
+    @Test
+    public void deleteIndexNodeTest() {
+        LinkedListAddRemove linkedList = new LinkedListAddRemove();
+        
+        for (int i = 1; i < 9; i++) {
+            System.err.println("向链表中添加第" + i + "个元素, 结果为: " + linkedList.addNodeToIndex(i, i));
+            System.err.println("链表此时的长度为: " + linkedList.length());
+            System.err.println("链表的内容为: " + linkedList);
+        }
+        
+        System.err.println();
+        
+        System.err.println("将链表中位置为0的元素删除, 结果为: " + linkedList.deleteIndexNode(0));
+        System.err.println("链表此时的长度为: " + linkedList.length());
+        System.err.println("链表的内容为: " + linkedList);
+        
+        System.err.println("将链表中位置为长度+1处的元素删除, 结果为: " 
+                    + linkedList.deleteIndexNode(linkedList.length() + 1));
+        System.err.println("链表此时的长度为: " + linkedList.length());
+        System.err.println("链表的内容为: " + linkedList);
+        
+        System.err.println();
+        
+        System.err.println("将链表中位置为1处的元素删除, 结果为: " + linkedList.deleteIndexNode(1));
+        System.err.println("链表此时的长度为: " + linkedList.length());
+        System.err.println("链表的内容为: " + linkedList);
+        
+        System.err.println();
+        
+        System.err.println("将链表中位置为4处的元素删除, 结果为: " + linkedList.deleteIndexNode(4));
+        System.err.println("链表此时的长度为: " + linkedList.length());
+        System.err.println("链表的内容为: " + linkedList);
+        
+        System.err.println();
+        
+        System.err.println("将链表中最末尾的元素删除, 结果为: "
+                + linkedList.deleteIndexNode(linkedList.length()));
+        System.err.println("链表此时的长度为: " + linkedList.length());
+        System.err.println("链表的内容为: " + linkedList);
+    }
 
 }

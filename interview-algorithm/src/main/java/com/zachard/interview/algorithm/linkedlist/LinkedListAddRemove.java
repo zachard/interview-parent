@@ -101,6 +101,47 @@ public class LinkedListAddRemove {
     }
     
     /**
+     * 删除指定位置上的节点
+     * 
+     * @param index   需要被删除元素的位置
+     * @return        true - 成功删除; false - 删除失败
+     */
+    public boolean deleteIndexNode(int index) {
+        
+        if (index < 1 || index > length()) {
+            // 链表位置有误
+            return false;
+        }
+        
+        // 需要被删除的节点
+        LinkedListNode delNode;
+        
+        if (index == 1) {
+            // 删除第一个节点的情况
+            delNode = head;
+            head = head.next;
+            delNode.next = null;
+            return true;
+        }
+        
+        // 其他情况
+        // 被删除节点的前继节点
+        LinkedListNode preNode = head;
+        
+        for (int i = 1; i < index - 1; i++) {
+            // 找到需要被删除节点的前继节点
+            preNode = preNode.next;
+        }
+        
+        // 找到需要被删除的节点并执行删除操作
+        delNode = preNode.next;
+        preNode.next = delNode.next;
+        delNode.next = null;
+        
+        return true;
+    }
+    
+    /**
      * 计算链表的长度
      * 
      * @return    链表的长度
