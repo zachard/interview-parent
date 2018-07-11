@@ -160,6 +160,38 @@ public class LinkedListAddRemove {
     }
     
     /**
+     * 将链表进行从小到大排序
+     * 
+     * @return   排序之后链表的head节点
+     */
+    public LinkedListNode orderList() {
+        LinkedListNode nextNode = null;
+        LinkedListNode curNode = head;
+        // 用于交换的数据
+        int tmp = 0;
+        
+        while (curNode.next != null) {
+            nextNode = curNode.next;
+            
+            while (nextNode != null) {
+                
+                // 比较两个节点中的数据, 如果倒序则交换数据
+                if (nextNode.data < curNode.data) {
+                    tmp = nextNode.data;
+                    nextNode.data = curNode.data;
+                    curNode.data = tmp;
+                }
+                
+                nextNode = nextNode.next;
+            }
+            
+            curNode = curNode.next;
+        }
+        
+        return head;
+    }
+    
+    /**
      * 链表的字符串表示
      * 
      * @return  链表元素的字符串表示

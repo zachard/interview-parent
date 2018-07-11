@@ -16,6 +16,8 @@
 
 package com.zachard.interview.algorithm.linkedlist;
 
+import java.util.Random;
+
 import org.junit.Test;
 
 /**
@@ -118,6 +120,26 @@ public class LinkedListAddRemoveTest {
                 + linkedList.deleteIndexNode(linkedList.length()));
         System.err.println("链表此时的长度为: " + linkedList.length());
         System.err.println("链表的内容为: " + linkedList);
+    }
+    
+    /**
+     * 链表排序测试
+     */
+    @Test
+    public void orderListTest() {
+        LinkedListAddRemove linkedList = new LinkedListAddRemove();
+        Random random = new Random();
+        
+        for (int i = 1; i < 6; i++) {
+            System.err.println("向链表中添加第" + i + "个元素, 结果为: " + linkedList.addNodeToIndex(i, random.nextInt(20)));
+            System.err.println("链表此时的长度为: " + linkedList.length());
+            System.err.println("链表的内容为: " + linkedList);
+        }
+        
+        linkedList.orderList();
+        
+        System.err.println("排序后链表的长度为: " + linkedList.length());
+        System.err.println("排序后链表的内容为: " + linkedList);
     }
 
 }
