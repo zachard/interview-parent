@@ -141,5 +141,52 @@ public class LinkedListAddRemoveTest {
         System.err.println("排序后链表的长度为: " + linkedList.length());
         System.err.println("排序后链表的内容为: " + linkedList);
     }
+    
+    /**
+     * 删除元素测试
+     */
+    @Test
+    public void removeRepeatTest() {
+        LinkedListAddRemove emptyList = new LinkedListAddRemove();
+        emptyList.removeRepeat();
+        System.err.println("空的链表执行移除重复元素操作, 移除后的链表为: " + emptyList);
+        
+        LinkedListAddRemove oneList = new LinkedListAddRemove();
+        oneList.addNodeToIndex(1, 10);
+        System.err.println("一个元素的链表重复元素移除之前, 内容为: " + oneList);
+        oneList.removeRepeat();
+        System.err.println("一个元素的链表重复元素移除之后, 内容为: " + oneList);
+        
+        LinkedListAddRemove twoDiffList = new LinkedListAddRemove();
+        twoDiffList.addNodeToIndex(1, 10);
+        twoDiffList.addNodeToIndex(2, 20);
+        System.err.println("两个不同值链表重复元素移除之前, 内容为: " + twoDiffList);
+        twoDiffList.removeRepeat();
+        System.err.println("两个不同值链表重复元素移除之后, 内容为: " + twoDiffList);
+        
+        LinkedListAddRemove twoSameList = new LinkedListAddRemove();
+        twoSameList.addNodeToIndex(1, 10);
+        twoSameList.addNodeToIndex(2, 10);
+        System.err.println("两个相同值链表重复元素移除之前, 内容为: " + twoSameList);
+        twoSameList.removeRepeat();
+        System.err.println("两个相同值链表重复元素移除之后, 内容为: " + twoSameList);
+        
+        LinkedListAddRemove normalList = new LinkedListAddRemove();
+        normalList.addNodeToIndex(1, 10);
+        normalList.addNodeToIndex(2, 5);
+        normalList.addNodeToIndex(3, 2);
+        normalList.addNodeToIndex(4, 10);
+        normalList.addNodeToIndex(5, 20);
+        normalList.addNodeToIndex(6, 2);
+        normalList.addNodeToIndex(7, 2);
+        normalList.addNodeToIndex(8, 8);
+        normalList.addNodeToIndex(9, 5);
+        normalList.addNodeToIndex(10, 18);
+        normalList.addNodeToIndex(11, 5);
+        normalList.addNodeToIndex(12, 9);
+        System.err.println("常规的元素链表重复元素移除之前, 内容为: " + normalList);
+        normalList.removeRepeat();
+        System.err.println("常规的元素链表重复元素移除之后, 内容为: " + normalList);
+    }
 
 }

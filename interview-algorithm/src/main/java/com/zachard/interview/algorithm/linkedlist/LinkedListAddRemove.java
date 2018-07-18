@@ -192,6 +192,44 @@ public class LinkedListAddRemove {
     }
     
     /**
+     * 删除重复元素
+     * 
+     * @return   删除后的列表
+     */
+    public LinkedListAddRemove removeRepeat() {
+        LinkedListNode tmp = head;
+        
+        while (tmp != null) {
+            // 前驱节点
+            LinkedListNode preNode = tmp;
+            // 当前比较的节点
+            LinkedListNode curNode = tmp.next;
+            
+            while (curNode != null) {
+                // 获取需要比较数据的下一个节点
+                LinkedListNode nextNode = curNode.next;
+                
+                if (curNode.data == tmp.data) {
+                    // 如果数据相等, 元素重复, 将前一个节点的next指针指向当前节点的下一节点
+                    preNode.next = nextNode;
+                    curNode.next = null;
+                } else {
+                    // 如果数据不相等, 需要pre指针需要跟着往后移动
+                    preNode = preNode.next;
+                }
+                
+                // 不论当前数据是否相等, 都需要将当前指针往后移动
+                curNode = nextNode;
+            }
+            
+            // 将节点往后移, 并将其数据与之后的节点数据比较
+            tmp = tmp.next;
+        }
+        
+        return this;
+    }
+    
+    /**
      * 链表的字符串表示
      * 
      * @return  链表元素的字符串表示
