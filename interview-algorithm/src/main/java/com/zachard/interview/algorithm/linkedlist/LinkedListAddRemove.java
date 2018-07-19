@@ -16,6 +16,9 @@
 
 package com.zachard.interview.algorithm.linkedlist;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 对单链表进行插入及删除操作的示例链表
  * <pre>
@@ -249,6 +252,29 @@ public class LinkedListAddRemove {
                 } else {
                     pre = pre.next;
                 }
+            }
+            
+            tmp = tmp.next;
+        }
+    }
+    
+    /**
+     * 低复杂度删除链表重复元素的方法
+     */
+    public void removeRepeatLowTime() {
+        List<Integer> dataList = new ArrayList<>();
+        LinkedListNode tmp = head;
+        LinkedListNode pre = null;  // head没有pre节点
+        
+        while (tmp != null) {
+            
+            if (dataList.contains(tmp.data)) {
+                // 如果存在重复元素, 则删除该元素
+                pre.next = tmp.next;
+            } else {
+                // 如果元素不存在, 则将元素添加到列表
+                dataList.add(tmp.data);
+                pre = tmp;
             }
             
             tmp = tmp.next;
