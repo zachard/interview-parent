@@ -230,6 +230,32 @@ public class LinkedListAddRemove {
     }
     
     /**
+     * 删除链表中的重复元素, 这是一种更为简便的方法, 比{@link LinkedListAddRemove#removeRepeat()}
+     * 创建更少的局部变量
+     * 
+     * @see  #removeRepeat()
+     */
+    public void removeRepeatConcise() {
+        LinkedListNode tmp = head;
+        
+        while (tmp != null) {
+            LinkedListNode pre = tmp;
+            
+            while (pre.next != null) {
+                // 遍历链表查看是否存在重复元素
+                
+                if (tmp.data == pre.next.data) {
+                    pre.next = pre.next.next;
+                } else {
+                    pre = pre.next;
+                }
+            }
+            
+            tmp = tmp.next;
+        }
+    }
+    
+    /**
      * 链表的字符串表示
      * 
      * @return  链表元素的字符串表示
